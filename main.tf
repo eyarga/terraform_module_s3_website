@@ -23,19 +23,19 @@ resource "aws_s3_bucket_website_configuration" "this" {
   }
 }
 
-# resource "aws_s3_bucket_policy" "allow_public_read" {
-#   bucket = aws_s3_bucket.website.id
-#   policy = data.aws_iam_policy_document.allow_public_read.json
-# }
+resource "aws_s3_bucket_policy" "allow_public_read" {
+  bucket = aws_s3_bucket.website.id
+  policy = data.aws_iam_policy_document.allow_public_read.json
+}
 
-# data "aws_iam_policy_document" "allow_public_read" {
-#   statement {
-#     principals {
-#       type        = "*"
-#       identifiers = ["*"]
-#     }
-#     actions   = ["s3:GetObject"]
-#     resources = ["${aws_s3_bucket.website.arn}/*"]
-#   }
-# }
+data "aws_iam_policy_document" "allow_public_read" {
+  statement {
+    principals {
+      type        = "*"
+      identifiers = ["*"]
+    }
+    actions   = ["s3:GetObject"]
+    resources = ["${aws_s3_bucket.website.arn}/*"]
+  }
+}
 
