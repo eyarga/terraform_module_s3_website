@@ -1,5 +1,5 @@
 variable "bucket_name" {
-  description = "s3 bucket name for the website"
+  description = "Name of S3 bucket for the website"
   type        = string
 }
 
@@ -15,19 +15,19 @@ variable "create_random_suffix" {
   default     = false
 }
 
-variable "env" {
+variable "environment" {
   description = "Environment bucket resides in"
   type        = string
 }
 
 variable "index_document" {
-  description = "Index document name for the website"
+  description = "Name of index document for the website"
   type        = string
   default     = "index.html"
 }
 
 variable "error_document" {
-  description = "Error document for the website"
+  description = "Name of error document for the website"
   type        = string
   default     = "error.html"
 }

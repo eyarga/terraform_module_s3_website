@@ -1,6 +1,6 @@
 locals {
   random_suffix = var.create_random_suffix ? "${var.bucket_name}-${random_pet.suffix.id}" : var.bucket_name
-  name_with_env = "${local.random_suffix}-${var.env}"
+  name_with_env = "${local.random_suffix}-${var.environment}"
 }
 
 resource "aws_s3_bucket" "website" {
@@ -30,12 +30,16 @@ resource "aws_s3_bucket_policy" "allow_public_read" {
 
 data "aws_iam_policy_document" "allow_public_read" {
   statement {
+
     principals {
       type        = "*"
       identifiers = ["*"]
     }
-    actions   = ["s3:GetObject"]
+
+    actions = ["s3:GetObject"]
+
     resources = ["${aws_s3_bucket.website.arn}/*"]
   }
 }
+
 
